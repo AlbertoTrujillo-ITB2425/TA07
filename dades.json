@@ -1,0 +1,32 @@
+[
+    {
+        "date": "01/01/2125",
+        "energy_consumption": 50000,
+        "water_consumption": 200000,
+        "office_supplies": 1000,
+        "cleaning_products": 300,
+        "solar_panels": 80,
+        "solar_production": 1,
+        "period": "1m"
+    },
+    {
+        "date": "01/02/1925",
+        "energy_consumption": 52000,
+        "water_consumption": 210000,
+        "office_supplies": 1200,
+        "cleaning_products": 350,
+        "solar_panels": 80,
+        "solar_production": 1.1,
+        "period": "1m"
+    },
+    {
+        "date": "01/10/1025",
+        "energy_consumption": 53000,
+        "water_consumption": 215000,
+        "office_supplies": 1300,
+        "cleaning_products": 400,
+        "solar_panels": 80,
+        "solar_production": 1.2,
+        "period": "1m"
+    }
+]
