@@ -138,49 +138,18 @@ function parseJSON(jsonText) {
     }
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-    // Obtener el input del archivo
-    const fileInput = document.getElementById('fileInput');
-    
-    // Evento para cuando se selecciona un archivo
-    fileInput.addEventListener("change", function(event) {
-        const file = event.target.files[0]; // Obtener el archivo seleccionado
-        if (file && file.type === "text/csv") {
-            const reader = new FileReader(); // Crear un lector de archivos
-            
-            // Evento cuando se carga el archivo correctamente
-            reader.onload = function(e) {
-                const csvText = e.target.result; // Obtener el contenido del archivo CSV
-                parseCSV(csvText); // Procesar el archivo CSV
-            };
-
-            // Leer el archivo como texto
-            reader.readAsText(file);
-        } else {
-            alert("Por favor, selecciona un archivo CSV.");
-        }
-    });
-
-    // Función para procesar el CSV
-    function parseCSV(csvText) {
-        const rows = csvText.split("\n"); // Dividir el archivo CSV en filas
-        const table = document.createElement('table'); // Crear una tabla HTML
-        
-        rows.forEach((row, index) => {
-            const cells = row.split(","); // Dividir cada fila en celdas
-            const tr = document.createElement('tr'); // Crear una fila de tabla
-
-            cells.forEach(cell => {
-                const td = document.createElement('td'); // Crear una celda
-                td.textContent = cell.trim(); // Agregar el contenido de la celda
-                tr.appendChild(td); // Añadir la celda a la fila
-            });
-
-            table.appendChild(tr); // Añadir la fila a la tabla
+window.addEventListener("load", function () {
+    fetch('proves.csv')  // Cargar automÃ¡ticamente el archivo CSV
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('No se pudo cargar proves.csv');
+            }
+            return response.text();
+        })
+        .then(csvText => {
+            parseCSV(csvText);  // Procesar el archivo como si fuera cargado manualmente
+        })
+        .catch(error => {
+            console.error('Error al cargar el archivo CSV:', error);
         });
-
-        // Mostrar la tabla en el HTML
-        document.getElementById('output').innerHTML = '';
-        document.getElementById('output').appendChild(table);
-    }
 });
