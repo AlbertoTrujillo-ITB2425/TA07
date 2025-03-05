@@ -1,17 +1,18 @@
+
 <!DOCTYPE html>
 <html lang="ca">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Calculadora de sostenibilitat per ajudar a mesurar l'impacte ambiental de les teves activitats. Millorar la sostenibilitat amb eines fàcils d'usar i resultats precisos.">
-        <meta name="keywords" content="sostenibilitat, calculadora de sostenibilitat, impacte ambiental, eines de sostenibilitat, reducció de la petjada de carboni, medi ambient, sostenibilitat personal">
+        <meta name="description" content="Calculadora de sostenibilidad para ayudar a medir el impacto ambiental de tus actividades. Mejorar la sostenibilidad con herramientas fáciles de usar y resultados precisos.">
+        <meta name="keywords" content="sostenibilidad, calculadora de sostenibilidad, impacto ambiental, herramientas de sostenibilidad, reducción de huella de carbono, medio ambiente, sostenibilidad personal">
         <meta name="author" content="Alberto Trujillo, Didac Escoda, Jia Jun Ye, Steven Zapata">
-        <meta property="og:title" content="Calculadora de Sostenibilitat - Impacte Ambiental">
-        <meta property="og:description" content="Utilitza la nostra calculadora per mesurar i reduir el teu impacte ambiental. Eines interactives i precises per avaluar la teva sostenibilitat.">
+        <meta property="og:title" content="Calculadora de Sostenibilidad - Impacto Ambiental">
+        <meta property="og:description" content="Usa nuestra calculadora para medir y reducir tu impacto ambiental. Herramientas interactivas y precisas para evaluar tu sostenibilidad.">
         <meta property="og:url" content="https://g2estalvienergiat07.com/">
-        <meta property="og:image" content="https://img.freepik.com/vector-gratis/signo-reciclaje-hoja-verde_78370-845.jpg"> <!-- Posar una URL d'imatge relacionada amb sostenibilitat -->
-        <meta name="robots" content="index, follow">  <!-- Permet que els motors de cerca indexin i segueixin el lloc -->
-        <title>TA07 - ASIxc1B G2 - Calculadora de Sostenibilitat</title>
+        <meta property="og:image" content="https://img.freepik.com/vector-gratis/signo-reciclaje-hoja-verde_78370-845.jpg"> <!-- Pon una URL de imagen relacionada con sostenibilidad -->
+        <meta name="robots" content="index, follow">  <!-- Permite que los motores de búsqueda indexen y sigan el sitio -->
+        <title>TA07 - ASIxc1B G2 - Calculadora de Sostenibilidad</title>
         <link rel="icon" href="https://img.freepik.com/vector-gratis/signo-reciclaje-hoja-verde_78370-845.jpg" type="image/x-icon">
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -25,166 +26,167 @@
         <script src="src/js/solar.js"></script>
     </head>
     <body class="bg-gray-50 font-sans">
-        <div class="max-w-4xl mx-auto p-8 bg-white shadow-xl rounded-lg mt-10">
-            <!-- Encapçalament amb el GIF -->
-            <div class="flex justify-between items-center mb-8">
-                <h2 class="text-3xl font-semibold text-center text-indigo-600">Calculadora de Consum Sostenible - G2</h2>
-                <!-- GIF petit al costat del títol -->
-                <img src="./assets/animacion_1.gif" alt="Animació de sostenibilitat" class="w-20 h-auto ml-4">
-            </div>
-
-            <!-- Contenidor per al selector de dates (el generarà dinàmicament el JavaScript) -->
-            <div id="date-selection-container" class="mb-8">
-                <!-- Aquí apareixerà el selector de dates dinàmicament -->
-            </div>
-
-            <!-- Mostrar opcions de plaques solars -->
-            <div class="mb-8">
-                <button id="solarPanelsToggle" onclick="toggleSolarPanels()" class="py-2 px-6 bg-white text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-500 w-full text-left flex items-center space-x-3">
-                    <span>Plaques Solars</span>
-                    <i class="fas fa-sun"></i>
-                </button>
-            </div>
-
-            <div id="solarPanelsSection" class="hidden mb-8">
-                <!-- Plaques solars -->
-                <div class="mb-6">
-                    <label for="solar-panels" class="block text-lg font-semibold text-gray-700">Nombre de plaques solars:</label>
-                    <input type="number" id="solar-panels" class="p-3 border rounded-lg w-full bg-gray-100 hover:bg-gray-200 transition-all" placeholder="Número de plaques solars" onchange="calculateSolarEnergy()" disabled>
+            <div class="max-w-4xl mx-auto p-8 bg-white shadow-xl rounded-lg mt-10">
+                <!-- Encapçalament amb el GIF -->
+                <div class="flex justify-between items-center mb-8">
+                    <h2 class="text-3xl font-semibold text-center text-indigo-600">Calculadora de Consum Sostenible - G2</h2>
+                    <!-- GIF petit al costat del títol -->
+                    <img src="./assets/animacion_1.gif" alt="Animació de sostenibilitat" class="w-20 h-auto ml-4">
                 </div>
 
-                <div class="mb-6">
-                    <label for="solar-production" class="block text-lg font-semibold text-gray-700">Producció mitjana diària de les plaques solars (kWh):</label>
-                    <input type="number" id="solar-production" class="p-3 border rounded-lg w-full bg-gray-100 hover:bg-gray-200 transition-all" placeholder="Producció mitjana de les plaques solars en kWh" onchange="calculateSolarEnergy()" disabled>
+                <!-- Contenidor per al selector de dates (el generarà dinàmicament el JavaScript) -->
+                <div id="date-selection-container" class="mb-8">
+                    <!-- Aquí apareixerà el selector de dates dinàmicament -->
                 </div>
 
-                <!-- Consum energètic ajustat -->
-                <div class="mb-6">
-                    <p class="text-lg font-semibold text-gray-700">Consum energètic ajustat (kWh) <span class="text-sm text-gray-500">(Tenint en compte les plaques solars)</span>:</p>
-                    <div class="flex items-center">
-                        <p id="adjusted-consumption" class="text-2xl font-bold text-green-600">0 kWh</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Dades de consum -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-8">
-                <!-- Consum elèctric -->
-                <div class="form-group">
-                    <label for="energy-consumption" class="block text-lg font-semibold text-gray-700" id="energy-consumption-label">Consum elèctric (kWh):</label>
-                    <input type="number" id="energy-consumption" class="p-3 border rounded-lg w-full bg-gray-100 hover:bg-gray-200 transition-all" placeholder="Entra el consum elèctric mensual" onchange="calculateSolarEnergy()" disabled>
+                <!-- Mostrar opcions de plaques solars -->
+                <div class="mb-8">
+                    <button id="solarPanelsToggle" onclick="toggleSolarPanels()" class="py-2 px-6 bg-white text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-500 w-full text-left flex items-center space-x-3">
+                        <span>Plaques Solars</span>
+                        <i class="fas fa-sun"></i>
+                    </button>
                 </div>
 
-                <!-- Consum d'aigua -->
-                <div class="form-group">
-                    <label for="water-consumption" class="block text-lg font-semibold text-gray-700">Consum d'aigua (litres):</label>
-                    <input type="number" id="water-consumption" class="p-3 border rounded-lg w-full bg-gray-100 hover:bg-gray-200 transition-all" placeholder="Entra el consum d'aigua mensual" disabled>
-                </div>
+        <div id="solarPanelsSection" class="hidden mb-8">
+            <!-- Placas solares -->
+            <div class="mb-6">
+                <label for="solar-panels" class="block text-lg font-semibold text-gray-700">Nombre de plaques solars:</label>
+                <input type="number" id="solar-panels" class="p-3 border rounded-lg w-full bg-gray-100 hover:bg-gray-200 transition-all" placeholder="Número de plaques solares" onchange="calculateSolarEnergy()" disabled>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-8">
-                <!-- Consum de materials escolars -->
-                <div class="form-group">
-                    <label for="office-supplies" class="block text-lg font-semibold text-gray-700">Consum de materials escolars (unitats):</label>
-                    <input type="number" id="office-supplies" class="p-3 border rounded-lg w-full bg-gray-100 hover:bg-gray-200 transition-all" placeholder="Entra el consum mensual de materials escolars" disabled>
-                </div>
-
-                <!-- Consum de productes de neteja -->
-                <div class="form-group">
-                    <label for="cleaning-products" class="block text-lg font-semibold text-gray-700">Consum de productes de neteja (unitats):</label>
-                    <input type="number" id="cleaning-products" class="p-3 border rounded-lg w-full bg-gray-100 hover:bg-gray-200 transition-all" placeholder="Entra el consum mensual de productes de neteja" disabled>
-                </div>
+            <div class="mb-6">
+                <label for="solar-production" class="block text-lg font-semibold text-gray-700">Producció mitjana diària de les plaques solars (kWh):</label>
+                <input type="number" id="solar-production" class="p-3 border rounded-lg w-full bg-gray-100 hover:bg-gray-200 transition-all" placeholder="Producció mitjana de les plaques solars en kWh" onchange="calculateSolarEnergy()" disabled>
             </div>
 
-            <div class="mb-8">
-                <label for="period" class="block text-lg font-semibold text-gray-700">Selecciona el període:</label>
-                <select id="period" class="p-3 border rounded-lg w-full bg-gray-100 hover:bg-gray-200 transition-all">
-                    <option value="1y">1 Any</option>       <!-- 1 any -->
-                    <option value="9m">9 Mesos (Setembre a Juny)</option> <!-- 9 mesos -->
-                    <option value="6m">6 Mesos</option>     <!-- 6 mesos -->
-                    <option value="3m">3 Mesos</option>     <!-- 3 mesos -->
-                    <option value="1m">1 Mes</option>       <!-- 1 mes -->
-                    <option value="1w">1 Setmana</option>   <!-- 1 setmana -->
-                    <option value="1d">1 Dia</option>       <!-- 1 dia -->
-                </select>
-            </div>
-
-
-            <div class="text-center">
-                <button onclick="calculateConsumption()" class="py-2 px-6 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4">Calcular Consum</button>
-            </div>
-
-            <!-- Resultats en detall -->
-            <div id="result" class="mt-6"></div>
-
-            <!-- Gràfics de consum -->
-            <div class="mt-6">
-                <canvas id="consumptionChart"></canvas>
-            </div>
-
-            <!-- Botó per generar i descarregar el PDF -->
-            <div class="text-center mt-8">
-                <button onclick="generatePDF()" class="py-2 px-6 bg-red-600 text-white rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 mb-4">Generar PDF</button>
-            </div>
-
-            <!-- Botó de Neteja -->
-            <div class="text-center mt-4">
-                <button id="clear-button" class="py-2 px-6 bg-gray-400 text-white rounded-lg hover:bg-gray-500 focus:outline-none mb-4" > Netejar</button>
-            </div>
-
-            <!-- Secció per a consells de reducció -->
-            <div class="mt-6 p-4 bg-gray-50 border-t-2 border-gray-200">
-                <button id="tipsButton" onclick="toggleTips()" class="py-2 px-6 bg-green-600 text-white rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 mb-4">Com reduir els teus consums 🌿</button>
-                <div id="tipsSection" class="mt-4 hidden">
-                    <h3 class="text-2xl font-semibold text-indigo-600 mb-4">Consells per reduir el consum ♻️:</h3>
-                    <div class="space-y-4">
-                        <!-- Secció de Consells Elèctrics -->
-                        <div>
-                            <h4 class="text-xl font-semibold text-gray-700">Per reduir el consum elèctric:</h4>
-                            <ul class="list-disc pl-6">
-                                <li>Apaga els llums quan no els necessitis.</li>
-                                <li>Utilitza bombetes d'alta eficiència energètica (LED).</li>
-                                <li>Desendolla els aparells electrònics quan no els facis servir.</li>
-                                <li>Opta per electrodomèstics amb una bona etiqueta energètica.</li>
-                            </ul>
-                        </div>
-
-                        <!-- Secció de Consells d'Aigua -->
-                        <div>
-                            <h4 class="text-xl font-semibold text-gray-700">Per reduir el consum d'aigua:</h4>
-                            <ul class="list-disc pl-6">
-                                <li>Redueix el temps de dutxa per estalviar aigua.</li>
-                                <li>Repareu les fuites d'aigua per evitar malbaratar-la.</li>
-                                <li>Utilitza aixetes amb dispositius de control de flux.</li>
-                                <li>Recull aigua de la pluja per a ús no potable.</li>
-                            </ul>
-                        </div>
-
-                        <!-- Secció de Consells de Materials -->
-                        <div>
-                            <h4 class="text-xl font-semibold text-gray-700">Per reduir el consum de materials:</h4>
-                            <ul class="list-disc pl-6">
-                                <li>Opta per materials reciclats sempre que sigui possible.</li>
-                                <li>Redueix la quantitat de paper que utilitzes i opta per versions digitals.</li>
-                                <li>Reutilitza els materials d'escola sempre que puguis.</li>
-                                <li>Compra materials que siguin més duradors i sostenibles.</li>
-                            </ul>
-                        </div>
-
-                        <!-- Secció de Consells de Neteja -->
-                        <div>
-                            <h4 class="text-xl font-semibold text-gray-700">Per reduir el consum de productes de neteja:</h4>
-                            <ul class="list-disc pl-6">
-                                <li>Opta per productes de neteja ecològics i no tòxics.</li>
-                                <li>Fes servir envasos reutilitzables per a productes de neteja.</li>
-                                <li>Evita els productes amb molta quantitat de plàstic.</li>
-                                <li>Utilitza materials naturals com el vinagre per netejar quan sigui possible.</li>
-                            </ul>
-                        </div>
-                    </div>
+            <!-- Consum energètic ajustat -->
+            <div class="mb-6">
+                <p class="text-lg font-semibold text-gray-700">Consum energètic ajustat (kWh) <span class="text-sm text-gray-500">(Tenint en compte les plaques solars)</span>:</p>
+                <div class="flex items-center">
+                    <p id="adjusted-consumption" class="text-2xl font-bold text-green-600">0 kWh</p>
                 </div>
             </div>
         </div>
 
+        <!-- Datos de consumo -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-8">
+            <!-- Consum elèctric -->
+            <div class="form-group">
+                <label for="energy-consumption" class="block text-lg font-semibold text-gray-700" id="energy-consumption-label">Consum elèctric (kWh):</label>
+                <input type="number" id="energy-consumption" class="p-3 border rounded-lg w-full bg-gray-100 hover:bg-gray-200 transition-all" placeholder="Entra el consum elèctric mensual" onchange="calculateSolarEnergy()" disabled>
+            </div>
+
+            <!-- Consum d'aigua -->
+            <div class="form-group">
+                <label for="water-consumption" class="block text-lg font-semibold text-gray-700">Consum d'aigua (litres):</label>
+                <input type="number" id="water-consumption" class="p-3 border rounded-lg w-full bg-gray-100 hover:bg-gray-200 transition-all" placeholder="Entra el consum d'aigua mensual" disabled>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-8">
+            <!-- Consum de materials escolars -->
+            <div class="form-group">
+                <label for="office-supplies" class="block text-lg font-semibold text-gray-700">Consum de materials escolars (unitats):</label>
+                <input type="number" id="office-supplies" class="p-3 border rounded-lg w-full bg-gray-100 hover:bg-gray-200 transition-all" placeholder="Entra el consum mensual de materials escolars" disabled>
+            </div>
+
+            <!-- Consum de productes de neteja -->
+            <div class="form-group">
+                <label for="cleaning-products" class="block text-lg font-semibold text-gray-700">Consum de productes de neteja (unitats):</label>
+                <input type="number" id="cleaning-products" class="p-3 border rounded-lg w-full bg-gray-100 hover:bg-gray-200 transition-all" placeholder="Entra el consum mensual de productes de neteja" disabled>
+            </div>
+        </div>
+
+        <div class="mb-8">
+            <label for="period" class="block text-lg font-semibold text-gray-700">Selecciona el període:</label>
+            <select id="period" class="p-3 border rounded-lg w-full bg-gray-100 hover:bg-gray-200 transition-all">
+                <option value="1y">1 Any</option>       <!-- 1 año -->
+                <option value="9m">9 Mesos (Setembre a Juny)</option> <!-- 9 meses -->
+                <option value="6m">6 Mesos</option>     <!-- 6 meses -->
+                <option value="3m">3 Mesos</option>     <!-- 3 meses -->
+                <option value="1m">1 Mes</option>       <!-- 1 mes -->
+                <option value="1w">1 Setmana</option>   <!-- 1 semana -->
+                <option value="1d">1 Dia</option>       <!-- 1 día -->
+            </select>
+        </div>
+
+
+        <div class="text-center">
+            <button onclick="calculateConsumption()" class="py-2 px-6 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4">Calcular Consum</button>
+        </div>
+
+        <!-- Resultats en detall -->
+        <div id="result" class="mt-6"></div>
+
+        <!-- Gràfics de consum -->
+        <div class="mt-6">
+            <canvas id="consumptionChart"></canvas>
+        </div>
+
+        <!-- Botón para generar y descargar el PDF -->
+        <div class="text-center mt-8">
+            <button onclick="generatePDF()" class="py-2 px-6 bg-red-600 text-white rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 mb-4">Generar PDF</button>
+        </div>
+
+        <!-- Botón de Limpiar -->
+        <div class="text-center mt-4">
+            <button id="clear-button" class="py-2 px-6 bg-gray-400 text-white rounded-lg hover:bg-gray-500 focus:outline-none mb-4" > Limpiar</button>
+        </div>
+
+        <!-- Secció per a consells de reducció -->
+        <div class="mt-6 p-4 bg-gray-50 border-t-2 border-gray-200">
+            <button id="tipsButton" onclick="toggleTips()" class="py-2 px-6 bg-green-600 text-white rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 mb-4">Com reduir els teus consums 🌿</button>
+            <div id="tipsSection" class="mt-4 hidden">
+                <h3 class="text-2xl font-semibold text-indigo-600 mb-4">Consells per reduir el consum ♻️:</h3>
+                <div class="space-y-4">
+                    <!-- Sección de Consejos Eléctricos -->
+                    <div>
+                        <h4 class="font-semibold text-green-600 text-xl">Consum Elèctric ⚡</h4>
+                        <ul class="list-disc pl-6">
+                            <li>💡 <span class="font-bold">Apaga</span> els dispositius quan no els estiguis utilitzant.</li>
+                            <li>💡 <span class="font-bold">Utilitza</span> bombetes LED d'alta eficiència.</li>
+                            <li>❄️ <span class="font-bold">Ajusta</span> la temperatura del teu aire condicionat per evitar un consum excessiu.</li>
+                            <li>🔋 <span class="font-bold">Opta</span> per electrodomèstics amb etiqueta energètica A++ o superior.</li>
+                            <li>🔌 <span class="font-bold">Apaga</span> els endolls quan no estiguis utilitzant-los.</li>
+                        </ul>
+                    </div>
+                    <!-- Sección de Consejos de Ahorro de Agua -->
+                    <div>
+                        <h4 class="font-semibold text-blue-600 text-xl">Consum d'Aigua 💧</h4>
+                        <ul class="list-disc pl-6">
+                            <li>🚿 <span class="font-bold">Instal·la</span> un aeròmetre per reduir el flux d'aigua.</li>
+                            <li>🚰 <span class="font-bold">Apaga</span> l'aigua mentre et raspalles les dents o rentis les mans.</li>
+                            <li>💦 <span class="font-bold">Repara</span> filtres o aixetes que gotejen per evitar malbaratament.</li>
+                            <li>🧺 <span class="font-bold">Utilitza</span> una rentadora amb la càrrega adequada per evitar consum excessiu d'aigua.</li>
+                        </ul>
+                    </div>
+                    <!-- Otros Consejos -->
+                    <div>
+                        <h4 class="font-semibold text-yellow-600 text-xl">Consum de Materials Escolars 📚</h4>
+                        <ul class="list-disc pl-6">
+                            <li>💻 <span class="font-bold">Opta</span> per documents digitals i evita imprimir sempre que sigui possible.</li>
+                            <li>♻️ <span class="font-bold">Reutilitza</span> i recicla materials d'oficina com paper i cartutxos de tinta.</li>
+                            <li>📝 <span class="font-bold">Utilitza</span> paper reciclat per reduir el consum de recursos naturals.</li>
+                            <li>✏️ <span class="font-bold">Fomenta</span> l'ús de material escolar reutilitzable (carpetes, llapis, esborranys).</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-red-600 text-xl">Consum de Productes de Neteja 🧼</h4>
+                        <ul class="list-disc pl-6">
+                            <li>🧽 <span class="font-bold">Utilitza</span> productes de neteja ecològics per reduir la contaminació.</li>
+                            <li>🧴 <span class="font-bold">Compra</span> productes concentrats per reduir l'ús de plàstic.</li>
+                            <li>🧺 <span class="font-bold">Reutilitza</span> els draps de neteja i altres materials sempre que sigui possible.</li>
+                            <li>🌱 <span class="font-bold">Opta</span> per productes de neteja sense chemicals agressius.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="mt-10 py-6 bg-gray-800 text-white text-center">
+            <p>&copy; 2025 Calculadora sostenible ASIXc1B_MDS TA07.</p>
+            <p><strong>Alberto Trujillo, Didac Escoda, Jia Jun Ye y Steven Zapata</strong></p>
+        </footer>
+
+    </div>
     </body>
 </html>
