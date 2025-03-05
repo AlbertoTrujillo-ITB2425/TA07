@@ -1,1 +1,214 @@
+/* Colores personalizados */
+:root {
+    --color-principal: #4F46E5; /* Azul principal */
+    --color-secundario: #10B981; /* Verde */
+    --color-terciario: #F97316; /* Naranja */
+    --color-fondo: #008f39; /* Gris claro */
+    --color-boton: #6366F1; /* Azul botones */
+    --color-hover-boton: #4338CA; /* Hover sobre botones */
+    --color-texto: #333333; /* Color de texto */
+    --color-fondo-seccion: #F9FAFB; /* Fondo de secciones */
+    --color-borde: #E5E7EB; /* Color para bordes */
+}
+
+/* Fondo suave en la página */
+body {
+    background-color: rgba(139, 195, 74, 0.8); /* Verde claro con algo de opacidad para un fondo sutil */
+    font-family: 'Inter', sans-serif;
+    background-image: url('https://images.unsplash.com/photo-1601370690183-1c7796ecec61?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Zm9uZG8lMjB2ZXJkZXxlbnwwfHwwfHx8MA%3D%3D'); /* URL de la imagen de fondo */
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    color: var(--color-texto); /* Definir color de texto */
+}
+
+/* Animación de carga suave para el contenido */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Transición suave al hacer hover */
+button, input, select, .section, .modal-content {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Sombra para el contenedor principal */
+.max-w-4xl {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Botones con animaciones */
+button:hover, .btn:hover {
+    background-color: var(--color-hover-boton);
+    transform: translateY(-3px); /* Efecto de elevar el botón */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra adicional al hacer hover */
+}
+
+button:focus, .btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+}
+
+/* Estilos para campos de entrada y select */
+input[type="number"], input[type="file"], select {
+    background-color: #F3F4F6;
+    border: 1px solid var(--color-borde);
+    padding: 0.75rem;
+    border-radius: 12px; /* Bordes más redondeados */
+    width: 100%;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+input[type="number"]:focus, input[type="file"]:focus, select:focus {
+    background-color: #ffffff;
+    border-color: var(--color-principal);
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+}
+
+/* Estilos para los títulos */
+h2, h3, h4 {
+    color: var(--color-principal);
+    font-weight: 600;
+    letter-spacing: 1px; /* Espaciado de letras */
+}
+
+/* Estilos para los iconos en los botones */
+button i {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+button:hover i {
+    transform: rotate(20deg); /* Rotación más fuerte para los iconos */
+}
+
+/* Modal de advertencia */
+#warningModal {
+    transition: all 0.3s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
+}
+
+#warningModal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+#warningModal .modal-content {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Textos y consejos */
+ul.list-disc li {
+    margin-bottom: 12px; /* Espaciado entre elementos */
+}
+
+ul.list-disc li span {
+    font-weight: bold;
+}
+
+#tipsSection {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Efectos cuando se muestran u ocultan secciones */
+.hidden {
+    display: none;
+}
+
+.hidden.show {
+    display: block;
+}
+
+/* Fondo de las secciones de consejos */
+#tipsSection ul li {
+    background-color: #F9FAFB;
+    padding: 0.75rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#tipsSection ul li:hover {
+    background-color: #E5E7EB;
+    transform: translateX(5px); /* Desplazamiento suave al hacer hover */
+}
+
+/* Estilo para las opciones de carga de archivo */
+#fileUpload {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+#fileUpload:hover {
+    transform: scale(1.1); /* Efecto de zoom al pasar el ratón */
+}
+
+/* Estilos para las tablas o listas */
+table, ul {
+    margin-top: 16px;
+    margin-bottom: 16px;
+    padding: 0;
+}
+
+table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+table td, table th {
+    padding: 12px;
+    border: 1px solid var(--color-borde);
+    text-align: left;
+}
+
+table th {
+    background-color: var(--color-principal);
+    color: white;
+    font-weight: bold;
+}
+
+/* Estilo para el contenedor de la tabla */
+table tbody tr:hover {
+    background-color: #F9FAFB;
+    cursor: pointer;
+}
+
+/* Animación para los gráficos */
+canvas {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Estilo adicional para el fondo de secciones */
+section {
+    background-color: var(--color-fondo-seccion);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+section:hover {
+    background-color: #E5E7EB;
+    transform: translateY(-5px); /* Efecto de elevar la sección */
+}
+
+/* Personalización del fondo */
+body {
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+}
 
