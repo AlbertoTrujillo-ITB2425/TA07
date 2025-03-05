@@ -139,7 +139,7 @@ function parseJSON(jsonText) {
 }
 
 window.addEventListener("load", function () {
-    fetch('./proves.csv')  // Cargar automáticamente el archivo CSV
+    fetch('proves.csv')  // Cargar automáticamente el archivo CSV
         .then(response => {
             if (!response.ok) {
                 throw new Error('No se pudo cargar proves.csv');
